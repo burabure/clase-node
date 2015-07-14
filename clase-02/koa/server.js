@@ -20,7 +20,7 @@ app.use(function *(){
                       .map(function(url){ return get(url); });
 
   userJson.tweets
-    .forEach(function(url, index){ userJson.tweets[index] = output[index]; });
+    .forEach(function(url, index){ userJson.tweets[index] = JSON.parse(output[index]); });
 
   this.body = userJson;
 });
