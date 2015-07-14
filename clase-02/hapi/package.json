@@ -1,0 +1,15 @@
+{
+  "name": "hapi-helloworld",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Nicolas @elburabure Fernandez",
+  "license": "MIT",
+  "dependencies": {
+    "handlebars": "^3.0.3",
+    "hapi": "^8.8.0",
+    "joi": "^6.5.0"
+  }
+}

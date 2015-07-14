@@ -1,0 +1,12 @@
+{
+  "name": "koa-helloworld",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "author": "Nicolas @elburabure Fernandez",
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^0.21.0"
+  }
+}
