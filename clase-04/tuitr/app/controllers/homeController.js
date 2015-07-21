@@ -1,9 +1,7 @@
-import readFile from '../modules/readfile-promise';
-import path from 'path';
+import {getAll} from '../models/Tuit';
 
 export function* index() {
-  const tuits = JSON.parse(
-    yield readFile(path.join(__dirname, '..', '..', 'tmp', 'tuits.json'), {encoding: 'utf-8'}));
+  const tuits = yield getAll;
 
   yield this.render('home', {tuits});
 }
