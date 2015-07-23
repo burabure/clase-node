@@ -1,0 +1,23 @@
+<form id="newTweet" method="PUT">
+  User:<br>
+  <input type="text" name="user">
+  <br>
+  Tweet:<br>
+  <textarea name="body"></textarea>
+  <button name="submit">Enviar</button>
+</form>
+<script>
+  $('#newTweet button[name=submit]').click(function(e) {
+    e.preventDefault();
+    const query = {
+      user: $('#newTweet [name=user]').val(),
+      body: $('#newTweet [name=body]').val()
+    }
+    axios.put('/tuits', query)
+      .then(function(res){
+        console.log(res.data);
+        var newHtml = tuitsTemplate({tuits: res.data});
+        $('#tuits').html(newHtml);
+      });
+  });
+</script>

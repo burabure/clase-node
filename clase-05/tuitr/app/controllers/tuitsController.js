@@ -1,13 +1,13 @@
-import {create as createTweet} from '../models/Tuit';
+import * as Tuit from '../models/Tuit';
 
 export function* create() {
   const query = this.request.body;
   this.type = 'application/json';
 
   try{
-    const tuit = yield createTweet(query);
+    yield Tuit.create(query);
     this.status = 201;
-    this.body = tuit;
+    this.body = yield Tuit.getAll;
   }
   catch(error){
     console.log(error);

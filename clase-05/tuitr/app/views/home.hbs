@@ -3,14 +3,27 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="https://rawgit.com/mzabriskie/axios/master/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/3.0.3/handlebars.min.js"></script>
+
+  <script id="tuitsTemplate" type="text/x-handlebars-template">
+    {{{tuitsTemplate}}}
+  </script>
+
+  <script>
+    var source   = $("#tuitsTemplate").html();
+    var tuitsTemplate = Handlebars.compile(source);
+  </script>
+
 </head>
 <body>
   <h1>Tuitr</h1>
 
+  {{> tweetForm }}
+
   <div id="tuits">
-    {{#each tuits}}
-      {{> tuit }}
-    {{/each}}
+    {{> tuits }}
   </div>
 </body>
 </html>
