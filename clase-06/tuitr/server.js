@@ -2,11 +2,14 @@ import koa from 'koa';
 import appHbs from './app/modules/appHbs';
 import path from 'path';
 import route from 'koa-route';
+import serve from 'koa-static';
 import bodyParser from 'koa-bodyparser';
 import {index as homeIndex} from './app/controllers/homeController';
 import {create as tweetsCreate} from './app/controllers/tuitsController';
 
 const app = koa();
+
+app.use(serve(path.join(__dirname, 'public')));
 
 app.use(appHbs.middleware({
   viewPath: path.join(__dirname, 'app', 'views'),
