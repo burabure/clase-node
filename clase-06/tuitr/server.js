@@ -3,6 +3,7 @@ import appHbs from './app/modules/appHbs';
 import path from 'path';
 import serve from 'koa-static';
 import route from 'koa-route';
+import serve from 'koa-static';
 import bodyParser from 'koa-bodyparser';
 import {index as homeIndex} from './app/controllers/homeController';
 import {create as tweetsCreate} from './app/controllers/tuitsController';

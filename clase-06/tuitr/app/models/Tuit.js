@@ -1,31 +1,22 @@
+import mongoose from 'mongoose';
 import co from 'co';
-import path from 'path';
-import readFile from '../modules/readFile-promise';
-import writeFile from '../modules/writeFile-promise';
 
-const tuitsFilePath = path.join(__dirname, '..', '..', 'tmp', 'tuits.json');
-
-export const getAll = co(function* (){
-  const tuitsFile =
-      yield readFile(tuitsFilePath, {encoding: 'utf-8'});
-
-  return JSON.parse(tuitsFile.trim());
+const tuitSchema = mongoose.Schema({
+  user: String,
+  body: String
 });
+
+var Tuit = mongoose.model('Tuit', tuitSchema);
+
+export const getAll = Tuit.find().sort({_id: -1});
 
 
 export function create({user, body}) {
   return co(function* (){
-    let tuits = yield getAll;
-    const tuit = {
-      user,
-      body
-    };
-
-    tuits.push(tuit);
 
     try {
-      yield writeFile(tuitsFilePath, JSON.stringify(tuits));
-      return tuit;
+      const tuit = new Tuit({user, body});
+      return tuit.save();
     }
     catch(error) {
       throw error;

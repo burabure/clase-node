@@ -11,7 +11,7 @@ $('#newTweet button[name=submit]').click(e => {
 
   put('/tuits', query)
     .then(res => {
-      var newHtml = tuitsTemplate({tuits: res.data});
+      const newHtml = tuitsTemplate({tuits: res.data});
       $('#tuits').html(newHtml);
     });
 });
